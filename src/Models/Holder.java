@@ -23,22 +23,6 @@ public class Holder {
         this.setBookInHandsID(-1);
     }
 
-
-    public boolean idNumberValidation(){
-
-        String cleanIdNumber = this.getIdNumber();
-        return  false;
-    }
-
-    public boolean emailValidation(){
-
-        String email = this.getEmail();
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern emailPattern = Pattern.compile(emailRegex);
-        Matcher emailMatcher = emailPattern.matcher(email);
-
-        return  emailMatcher.matches();
-    }
     @Override
     public String toString(){
 
@@ -80,8 +64,6 @@ public class Holder {
     }
 
     public void setEmail(String email) {
-
-        if(!this.emailValidation()) throw new IllegalArgumentException("Invalid email");
 
         this.email = email;
     }
