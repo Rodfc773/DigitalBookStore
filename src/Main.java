@@ -1,24 +1,47 @@
 import Models.Book;
 import Models.Holder;
+import Utils.Templates;
+import Utils.Validations;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
+
+    private final ArrayList<Holder> holders = new ArrayList<>();
+    private final ArrayList<Book> books = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        LocalDate publishedRawData = LocalDate.of(2012, 8, 12);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String published = publishedRawData.format(formatter);
+        Scanner scan = new Scanner(System.in);
 
+        boolean online = true;
 
-        Book newBook = new Book("Eclipse", "Tolkien",published ,300);
-        Holder newHolder = new Holder("Clark", "Steven", 18, "115-077514.94", "rfc@gmail.com",1);
+        while(online){
 
-        System.out.println(newBook.toString());
-        System.out.println("---------------------------------------------------------------------------------------");
-        System.out.println(newHolder.toString());
+            Templates.mainMenu();
+
+            int option = scan.nextInt();
+
+            switch (option){
+
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("1");
+                    break;
+                default:
+                    online = false;
+                    break;
+            }
+
+        }
+        scan.close();
     }
 }

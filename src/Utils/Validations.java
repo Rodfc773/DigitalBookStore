@@ -14,30 +14,34 @@ public class Validations {
         return  emailMatcher.matches();
     }
 
-    public static boolean isPersonalIDValid(String personalNumber){
+    public static boolean isPersonalIDValid(String personalNumber) {
 
-        String cleanIdNumber = personalNumber.replaceAll("[^0-9]","");
+        String cleanIdNumber = personalNumber.replaceAll("[^0-9]", "");
 
-        if(cleanIdNumber.length() != 11) throw new IllegalArgumentException("The CPF is invalid");
+        if (cleanIdNumber.length() != 11) return false;
 
-        String firstNineDigits = cleanIdNumber.substring(0,8);
+        if(cleanIdNumber.matches("(\\d)\\1{10}")) return  false;
 
-        ArrayList<Integer> intDigits = new ArrayList<>();
+        int firstDigit = calculateDigit(cleanIdNumber.substring(0, 9), 10);
+        int secondDigit = calculateDigit(cleanIdNumber.substring(0,10), 11);
 
-        for (int idx = 0; idx < firstNineDigits.length(); idx++){
+        String trueIdNumber = cleanIdNumber.substring(0, 9) + String.valueOf(firstDigit) + String.valueOf(secondDigit);
 
-            int numericalChar = Character.getNumericValue(firstNineDigits.charAt(idx));
-            intDigits.add(numericalChar);
+        return cleanIdNumber.equals(trueIdNumber);
+    }
+
+    private static int calculateDigit(String base, int weight){
+
+        int sum = 0;
+
+        for (int idx = 0; idx < base.length(); idx++){
+
+            sum += Character.getNumericValue(base.charAt(idx)) * weight;
+            weight -= 1;
         }
 
-        int weights = 10;
-        int result = 0;
+        int rest = sum % 11;
 
-        for (Integer intDigit : intDigits) {
-
-            result += intDigit * weights;
-        }
-
-        return false;
+        return  (rest < 2) ? 0 : 11 - rest;
     }
 }
