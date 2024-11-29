@@ -14,6 +14,15 @@ public class Validations {
         return  emailMatcher.matches();
     }
 
+    public static boolean isAValidDate(String date){
+
+        String dateRegex = "^(0[0-9]|[12][0-9]|3[01])/(0[1-9] | 1[0-2])/([0-9]{4})";
+        Pattern datePattern = Pattern.compile(dateRegex);
+        Matcher dateMatcher = datePattern.matcher(date);
+
+        return  dateMatcher.matches();
+    }
+
     public static boolean isPersonalIDValid(String personalNumber) {
 
         String cleanIdNumber = personalNumber.replaceAll("[^0-9]", "");

@@ -7,24 +7,32 @@ public class Book {
     private String published;
     private int numberOfPages;
     private int holderId;
+    private int id;
 
 
-    public Book(String bookName, String authorName, String published, int numberOfPages){
+    public Book(String bookName, String authorName, String published, int numberOfPages, int id){
 
-        this.bookName = bookName;
-        this.published = published;
-        this.numberOfPages = numberOfPages;
-        this.authorName = authorName;
+        this.setBookName(bookName);
+        this.setPublished(published);
+        this.setId(id);
+        this.setAuthorName(authorName);
+        this.setNumberOfPages(numberOfPages);
         this.holderId = -1;
     }
 
     @Override
     public String toString() {
+
+        String existHolder = this.getHolderId() == -1 ? "Livro Disponível": "Livro Indisponível";
+
         return String.format(
-                "Titulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d",
-                this.getBookName(), this.getAuthorName(), this.getPublished(), this.getNumberOfPages());
+                "Id: %d\nTitulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d\nDisponivel: %s",
+                this.getId(), this.getBookName(), this.getAuthorName(), this.getPublished(), this.getNumberOfPages(), existHolder);
     }
 
+    public int getId(){
+        return  this.id;
+    }
     public String getBookName() {
         return bookName;
     }
@@ -64,4 +72,6 @@ public class Book {
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }
+
+    public void setId(int id){this.id = id;}
 }

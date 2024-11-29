@@ -1,23 +1,15 @@
-import Models.Book;
-import Models.Holder;
+import Utils.Register;
 import Utils.Templates;
-import Utils.Validations;
-
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Main {
 
-    private final ArrayList<Holder> holders = new ArrayList<>();
-    private final ArrayList<Book> books = new ArrayList<>();
-
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
+
+        Register register = new Register();
 
         boolean online = true;
 
@@ -32,9 +24,14 @@ public class Main {
                 case 1:
                     break;
                 case 2:
+                    try{
+                        register.registerBook();
+                    } catch (Exception e) {
+                        System.out.println("Ocorreu o seguinte error ao cadastrar um livro: " + e.getMessage());
+                    }
                     break;
                 case 3:
-                    System.out.println("1");
+                    register.getBooks();
                     break;
                 default:
                     online = false;
