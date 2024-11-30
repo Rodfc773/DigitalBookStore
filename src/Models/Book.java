@@ -26,7 +26,7 @@ public class Book {
         String existHolder = this.getHolderId() == -1 ? "Livro Disponível": "Livro Indisponível";
 
         return String.format(
-                "Id: %d\nTitulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d\nDisponivel: %s",
+                "Id: %d\nTitulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d\nDisponibilidade: %s",
                 this.getId(), this.getBookName(), this.getAuthorName(), this.getPublished(), this.getNumberOfPages(), existHolder);
     }
 

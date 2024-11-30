@@ -51,10 +51,11 @@ public class Register {
 
         if(!Validations.isAValidDate(released)){
 
+            System.out.println(released);
             throw new IllegalArgumentException("A data precisa estar no formato Dia/Mês/ano");
         }
 
-        Book newBook = new Book(title, authorName, released, numberPages, universalBookID);
+        Book newBook = new Book(title, authorName, released, numberPages, this.universalBookID);
 
         this.books.add(newBook);
         this.universalBookID += 1;
