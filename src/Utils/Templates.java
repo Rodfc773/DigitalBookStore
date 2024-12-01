@@ -27,6 +27,13 @@ public class Templates {
         System.out.println();
 
     }
+    public  static void registerholder(){
+
+        System.out.println("-------------- Você está na opção de cadastro de Usuários -------------- ");
+        System.out.println();
+        System.out.println("                        Siga  as instruções abaixo:                    ");
+        System.out.println();
+    }
     public static void startListBookTemplate(){
 
         System.out.println("-------------- Livros Cadastrados -------------- ");

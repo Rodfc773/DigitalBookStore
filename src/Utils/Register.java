@@ -59,8 +59,40 @@ public class Register {
 
         this.books.add(newBook);
         this.universalBookID += 1;
+
+        scan.close();
     }
 
+    public void registerHolders(){
+        String holderEmail, firstName, lastName, personalIDNumber;
+        int age;
+
+        Scanner scan = new Scanner(System.in);
+
+        Templates.registerholder();
+
+        System.out.println("Digite o seu primeiro nome: ");
+
+        firstName = scan.next();
+
+        System.out.println("Digite o seu último nome: ");
+
+        lastName = scan.next();
+
+        System.out.println("Digite seu email: ");
+
+        holderEmail = scan.next();
+
+        System.out.println("Digite sua Idade: ");
+
+        age = Integer.parseInt(scan.next());
+
+        System.out.println("Digite seu CPF: ");
+
+        personalIDNumber = scan.next();
+
+
+    }
     public void getBooks(){
 
         Templates.startListBookTemplate();
