@@ -22,6 +22,13 @@ public class Main {
             switch (option){
 
                 case 1:
+                    try{
+
+                        register.registerHolders();
+                    }catch (Exception e){
+
+                        System.out.println("Ocorreu o seguinte erro ao cadastrar um usuário: " + e.getMessage());
+                    }
                     break;
                 case 2:
                     try{
@@ -32,6 +39,9 @@ public class Main {
                     break;
                 case 3:
                     register.getBooks();
+                    break;
+                case 4:
+                    register.getHolders();
                     break;
                 default:
                     online = false;

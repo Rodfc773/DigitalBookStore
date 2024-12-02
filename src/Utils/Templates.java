@@ -14,7 +14,8 @@ public class Templates {
         System.out.println("---- 1: Cadastrar-se                                                                 ");
         System.out.println("---- 2: Cadastrar um novo livro no sistema                                           ");
         System.out.println("---- 3: Listar livros cadastrados                                                   ");
-        System.out.println("---- 4: Desligar o sistema sistema                                                  ");
+        System.out.println("---- 4: Listar Usuários                                                  ");
+        System.out.println("---- 5: Desligar o sistema sistema                                                  ");
         System.out.println();
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
@@ -34,9 +35,9 @@ public class Templates {
         System.out.println("                        Siga  as instruções abaixo:                    ");
         System.out.println();
     }
-    public static void startListBookTemplate(){
+    public static void startListTemplate(String title){
 
-        System.out.println("-------------- Livros Cadastrados -------------- ");
+        System.out.println("-------------- " + title + " -------------- ");
 
     }
     public static void endListBookTemplate(){

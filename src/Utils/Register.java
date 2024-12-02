@@ -50,8 +50,6 @@ public class Register {
         }
 
         if(!Validations.isAValidDate(released)){
-
-            System.out.println(released);
             throw new IllegalArgumentException("A data precisa estar no formato Dia/Mês/ano");
         }
 
@@ -91,11 +89,18 @@ public class Register {
 
         personalIDNumber = scan.next();
 
+        if(!Validations.isEmail(holderEmail)){ throw new IllegalArgumentException("Email Inválido");}
+        if(!Validations.isPersonalIDValid(personalIDNumber)){throw new IllegalArgumentException("CPF Inválido");}
 
+        Holder newHolder = new Holder(firstName,lastName,age,personalIDNumber, holderEmail, universalHolderId);
+
+        this.universalHolderId += 1;
+
+        this.holders.add(newHolder);
     }
     public void getBooks(){
 
-        Templates.startListBookTemplate();
+        Templates.startListTemplate("Livros Cadastrados");
 
         this.books.forEach(book -> {
 
@@ -105,5 +110,17 @@ public class Register {
 
         Templates.endListBookTemplate();
 
+    }
+
+    public  void getHolders(){
+
+        Templates.startListTemplate("Usuários cadastrados");
+
+        this.holders.forEach(holder-> {
+            String information = holder.toString();
+            System.out.println(information);
+        });
+
+        Templates.endListBookTemplate();
     }
 }
