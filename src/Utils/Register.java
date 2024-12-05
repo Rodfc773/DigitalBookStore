@@ -58,7 +58,6 @@ public class Register {
         this.books.add(newBook);
         this.universalBookID += 1;
 
-        scan.close();
     }
 
     public void registerHolders(){
@@ -98,7 +97,7 @@ public class Register {
 
         this.holders.add(newHolder);
     }
-    public void getBooks(){
+    public ArrayList<Book> getBooks(){
 
         Templates.startListTemplate("Livros Cadastrados");
 
@@ -109,6 +108,8 @@ public class Register {
         });
 
         Templates.endListBookTemplate();
+
+        return this.books;
 
     }
 

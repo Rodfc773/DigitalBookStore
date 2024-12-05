@@ -29,6 +29,10 @@ public class Book {
                 "Id: %d\nTitulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d\nDisponibilidade: %s",
                 this.getId(), this.getBookName(), this.getAuthorName(), this.getPublished(), this.getNumberOfPages(), existHolder);
     }
+    public String toJson(){
+        return String.format("{\"id\":%d,\"title\":\"%s\",\"author\":\"%s\",\"publishedDate\":\"%s\",\"numberOfPages\":%s,\"holder\":%d}",
+                this.getId(),this.getBookName(), this.getAuthorName(), this.getPublished(), this.getNumberOfPages(), this.getHolderId());
+    }
 
     public int getId(){
         return  this.id;
