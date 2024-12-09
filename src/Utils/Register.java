@@ -4,6 +4,7 @@ import Models.Book;
 import Models.Holder;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Register {
@@ -11,11 +12,13 @@ public class Register {
     private int universalBookID = 1;
     private int universalHolderId = 1;
 
-    private final ArrayList<Holder> holders = new ArrayList<>();
-    private final ArrayList<Book> books = new ArrayList<>();
+    private final List<Holder> holders = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
 
 
-    public Register(){}
+    public Register(){
+        this.readBooksFromDatabase();
+    }
 
     public void registerBook(){
 
@@ -97,7 +100,7 @@ public class Register {
 
         this.holders.add(newHolder);
     }
-    public ArrayList<Book> getBooks(){
+    public List<Book> getBooks(){
 
         Templates.startListTemplate("Livros Cadastrados");
 
@@ -123,5 +126,13 @@ public class Register {
         });
 
         Templates.endListBookTemplate();
+    }
+
+    public void readBooksFromDatabase(){
+        try{
+            this.books = DatabaseWriterFile.readBooksAtJsonFile(this.books);
+        } catch (Exception e) {
+            System.out.println("Error at fecthing Books data from JSON: " + e.getMessage());
+        }
     }
 }
