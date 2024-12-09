@@ -4,6 +4,7 @@ import Utils.Register;
 import Utils.Templates;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
@@ -49,7 +50,7 @@ public class Main {
                     register.getHolders();
                     break;
                 default:
-                    ArrayList<Book> books = register.getBooks();
+                    List<Book> books = register.getBooks();
 
                     try{
                         DatabaseWriterFile.saveBooksOnFile(books);
