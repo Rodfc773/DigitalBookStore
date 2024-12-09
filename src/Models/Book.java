@@ -19,6 +19,15 @@ public class Book {
         this.setNumberOfPages(numberOfPages);
         this.holderId = -1;
     }
+    public Book(String bookName, String authorName, String published, int numberOfPages, int id, int holderId){
+
+        this.setBookName(bookName);
+        this.setPublished(published);
+        this.setId(id);
+        this.setAuthorName(authorName);
+        this.setNumberOfPages(numberOfPages);
+        this.setHolderId(holderId);
+    }
 
     @Override
     public String toString() {
