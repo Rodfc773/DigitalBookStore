@@ -29,6 +29,13 @@ public class Holder {
         return String.format("Nome: %s\nIdade: %d\nEmail: %s",
                 this.getFirstName() + " " + this.getLastName(), this.getAge(), this.getEmail());
     }
+    public String toJson(){
+
+        return String.format(
+                "{\"id\":\"%d\",\"firstName\":\"%s\",\"lastName\":\"%s\",\"age\":\"%d\",\"idNumber\":\"%s\",\"email\":\"%s\", \"booksInHand\":\"%d\"}",
+
+                this.getID(), this.getFirstName(), this.getLastName(), this.getAge(), this.getIdNumber(), this.getEmail(), this.getBookInHandsID());
+    }
     public String getFirstName() {
         return firstName;
     }

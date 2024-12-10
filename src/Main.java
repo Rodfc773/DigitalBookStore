@@ -1,4 +1,5 @@
 import Models.Book;
+import Models.Holder;
 import Utils.DatabaseWriterFile;
 import Utils.Register;
 import Utils.Templates;
@@ -47,16 +48,17 @@ public class Main {
                     register.getBooks();
                     break;
                 case 4:
-                    register.getHolders();
+                    register.getStringHolders();
                     break;
                 default:
                     List<Book> books = register.getBooks();
+                    List<Holder> holders = register.getHolders();
 
                     try{
                         DatabaseWriterFile.saveBooksOnFile(books);
+                        DatabaseWriterFile.saveHoldersOnFile(holders);
                     }catch (Exception e){
-
-                        System.out.println("Não foi possivel salvar os dados dos Livros no arquivo json, ocorreu o seguinte erro: " + e.getMessage());
+                        System.out.println("Não foi possivel salvar os dados nos arquivo json, ocorreu o seguinte erro: " + e.getMessage());
                     }
                     online = false;
 

@@ -116,7 +116,7 @@ public class Register {
 
     }
 
-    public  void getHolders(){
+    public  void getStringHolders(){
 
         Templates.startListTemplate("Usuários cadastrados");
 
@@ -128,6 +128,10 @@ public class Register {
         Templates.endListBookTemplate();
     }
 
+    public  List<Holder> getHolders(){
+
+        return this.holders;
+    }
     public void readBooksFromDatabase(){
         try{
             this.books = DatabaseWriterFile.readBooksAtJsonFile(this.books);
