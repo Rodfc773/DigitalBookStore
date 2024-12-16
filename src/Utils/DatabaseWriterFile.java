@@ -37,7 +37,7 @@ public class DatabaseWriterFile {
         Files.write(BOOKS_FILE_PATH, jsonBuilder.toString().getBytes(StandardCharsets.UTF_8));
     }
 
-    public  static void saveHoldersOnFile(List<Holder> holders) throws IOException{
+    public static void saveHoldersOnFile(List<Holder> holders) throws IOException{
 
         Files.createDirectories(HOLDERS_FILE_PATH.getParent());
         StringBuilder jsonBuilder = new StringBuilder();
@@ -45,7 +45,6 @@ public class DatabaseWriterFile {
         jsonBuilder.append("[\n");
 
         holders.forEach((holder -> {
-
             jsonBuilder.append(holder.toJson());
             jsonBuilder.append(",\n");
         }));
@@ -88,6 +87,41 @@ public class DatabaseWriterFile {
 
         }
         return books;
+    }
+
+    public static List<Holder> readHoldersFromFile(List<Holder> holders) throws IOException{
+
+        Path filePath = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/database/holders.json");
+
+        if(!Files.exists(filePath)) throw new IOException("Arquivo contendo os dados dos usuários não foram encontrados");
+
+        String jsonContent = Files.readString(filePath);
+        jsonContent = jsonContent.trim().replaceAll("\\[|\\]","");
+        String[] jsonItems = jsonContent.split("\\},\\s*\\{");
+
+        for (String item: jsonItems) {
+
+            item = item.trim();
+
+            if (!item.startsWith("{")) item = "{" + item;
+            if (!item.endsWith("}")) item = item + "}";
+
+            int id = Integer.parseInt(extractValue(item, "id"));
+            String firstname = extractValue(item, "firstName");
+            String lastName = extractValue(item, "lastName");
+            int age = Integer.parseInt(extractValue(item, "age"));
+            String idNumber = extractValue(item, "idNumber");
+            String email = extractValue(item, "email");
+            int bookOnHands = Integer.parseInt(extractValue(item, "booksInHand"));
+
+            Holder holder = new Holder(firstname, lastName, age, idNumber, email, id);
+
+            holder.setBookInHandsID(bookOnHands);
+
+            holders.add(holder);
+        }
+
+        return holders;
     }
 
 

@@ -12,12 +12,13 @@ public class Register {
     private int universalBookID = 1;
     private int universalHolderId = 1;
 
-    private final List<Holder> holders = new ArrayList<>();
+    private List<Holder> holders = new ArrayList<>();
     private List<Book> books = new ArrayList<>();
 
 
     public Register(){
         this.readBooksFromDatabase();
+        this.readHoldersFromDatabase();
     }
 
     public void registerBook(){
@@ -136,7 +137,14 @@ public class Register {
         try{
             this.books = DatabaseWriterFile.readBooksAtJsonFile(this.books);
         } catch (Exception e) {
-            System.out.println("Error at fecthing Books data from JSON: " + e.getMessage());
+            System.out.println("Error at fetching Books data from JSON: " + e.getMessage());
+        }
+    }
+    public void readHoldersFromDatabase(){
+        try{
+            this.holders = DatabaseWriterFile.readHoldersFromFile(this.holders);
+        } catch (Exception e) {
+            System.out.println("Error at fetching holders data from JSON: " + e.getMessage());
         }
     }
 }

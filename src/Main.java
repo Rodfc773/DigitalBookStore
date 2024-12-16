@@ -30,7 +30,6 @@ public class Main {
 
                 case 1:
                     try{
-
                         register.registerHolders();
                     }catch (Exception e){
 
