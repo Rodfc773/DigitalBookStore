@@ -20,5 +20,10 @@ for a time period, determined in the borrow negotiation.
 ## How to use
 
 1. Start the application running the main.java file and wait to the program start, this project was made fully in CLI commands, so the entire process is done at the cli Terminal's interface.
-2. enter a valid option and test: option 1 is to register a new user/holder, option 2 to register a book, 3 to make, 4 and are to list users and books and 6 is to finish the program.
+2. enter a valid option and test: **option 1 is to register a new user/holder**, **option 2 to register a book**, **3 to make, 4 and are to list users and books and 6 is to finish the program**.
 
+## Next steps
+
+In the future this project will have a **frontend application**** and a **backend application which supports HTTP requests** and will use
+****Database as storage**** for all the data. For now to complete this challenge propose by RocketSeat's Java formation of module 1, this program
+will do only the essential operations.
