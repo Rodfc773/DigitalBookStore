@@ -13,7 +13,7 @@ public class Holder {
     private int ID;
     private int bookInHandsID;
 
-    public Holder(String firstName, String lastName, int age, String idNumber, String email, int ID) {
+    public Holder(String firstName, String lastName, int age, String idNumber, String email,int ID) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setAge(age);
@@ -26,8 +26,14 @@ public class Holder {
     @Override
     public String toString(){
 
-        return String.format("Nome: %s\nIdade: %d\nEmail: %s",
+        String information = String.format("Nome: %s\nIdade: %d\nEmail: %s",
                 this.getFirstName() + " " + this.getLastName(), this.getAge(), this.getEmail());
+
+        if (this.getBookInHandsID() != -1){
+            information = information + "\nEstá em posso de um livro";
+        }
+
+        return information;
     }
     public String toJson(){
 
@@ -41,6 +47,10 @@ public class Holder {
     }
     public String getLastName() {
         return lastName;
+    }
+
+    public  String getFullName(){
+        return  firstName + " " + lastName;
     }
     public int getAge() {
         return age;

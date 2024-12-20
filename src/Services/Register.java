@@ -1,7 +1,10 @@
-package Utils;
+package Services;
 
 import Models.Book;
 import Models.Holder;
+import Utils.DatabaseReadFile;
+import Utils.Templates;
+import Utils.Validations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +127,7 @@ public class Register {
         this.holders.forEach(holder-> {
             String information = holder.toString();
             System.out.println(information);
+            System.out.println("------------------------------------");
         });
 
         Templates.endListBookTemplate();
@@ -135,16 +139,26 @@ public class Register {
     }
     public void readBooksFromDatabase(){
         try{
-            this.books = DatabaseWriterFile.readBooksAtJsonFile(this.books);
+            this.books = DatabaseReadFile.readBooksAtJsonFile(this.books);
+            this.universalBookID = this.books.size() + 1;
         } catch (Exception e) {
             System.out.println("Error at fetching Books data from JSON: " + e.getMessage());
         }
     }
     public void readHoldersFromDatabase(){
         try{
-            this.holders = DatabaseWriterFile.readHoldersFromFile(this.holders);
+            this.holders = DatabaseReadFile.readHoldersFromFile(this.holders);
+            this.universalHolderId = this.holders.size() + 1;
         } catch (Exception e) {
             System.out.println("Error at fetching holders data from JSON: " + e.getMessage());
         }
+    }
+
+    public void setHolder(Holder newData){
+        this.holders.set(newData.getID(), newData);
+    }
+
+    public  void setBook(Book newData){
+        this.books.set(newData.getId(), newData);
     }
 }

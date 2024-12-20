@@ -13,9 +13,10 @@ public class Templates {
         System.out.println();
         System.out.println("---- 1: Cadastrar-se                                                                 ");
         System.out.println("---- 2: Cadastrar um novo livro no sistema                                           ");
-        System.out.println("---- 3: Listar livros cadastrados                                                   ");
-        System.out.println("---- 4: Listar Usuários                                                  ");
-        System.out.println("---- 5: Desligar o sistema sistema                                                  ");
+        System.out.println("---- 3: Realizar emprestimo                                                   ");
+        System.out.println("---- 4: Listar livros cadastrados                                                   ");
+        System.out.println("---- 5: Listar Usuários                                                  ");
+        System.out.println("---- 6: Desligar o sistema sistema                                                  ");
         System.out.println();
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 

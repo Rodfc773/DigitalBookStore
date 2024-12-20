@@ -1,13 +1,12 @@
 import Models.Book;
 import Models.Holder;
+import Services.LoanService;
 import Utils.DatabaseWriterFile;
-import Utils.Register;
+import Services.Register;
 import Utils.Templates;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 
 public class Main {
@@ -44,9 +43,16 @@ public class Main {
                     }
                     break;
                 case 3:
-                    register.getBooks();
+                    try{
+                        LoanService.loanBook(register);
+                    } catch (Exception e) {
+                        System.out.println("Ocorreu o seguinte error ao fazer o emprestimo do livro: " + e.getMessage());
+                    }
                     break;
                 case 4:
+                    register.getBooks();
+                    break;
+                case 5:
                     register.getStringHolders();
                     break;
                 default:
