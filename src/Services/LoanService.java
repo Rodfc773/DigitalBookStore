@@ -26,6 +26,8 @@ public class LoanService {
         if(foundholder == null) throw new RuntimeException("User not found");
         if(foundBook == null) throw new RuntimeException("Book not found");
 
+        if(foundBook.getHolderId() != -1) throw  new RuntimeException("The book is already loaned");
+
         foundholder.setBookInHandsID(foundBook.getId());
 
         foundBook.setHolderId(foundholder.getID());

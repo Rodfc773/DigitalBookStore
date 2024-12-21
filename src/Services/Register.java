@@ -106,12 +106,15 @@ public class Register {
     }
     public List<Book> getBooks(){
 
-        Templates.startListTemplate("Livros Cadastrados");
+        Templates.startListTemplate("Livros Cadastrados Disponiveis");
 
         this.books.forEach(book -> {
 
-            String information = book.toString();
-            System.out.println(information);
+            if(book.getHolderId() == -1) {
+                String information = book.toString();
+                System.out.println(information);
+                System.out.println("----------------------------");
+            }
         });
 
         Templates.endListBookTemplate();
