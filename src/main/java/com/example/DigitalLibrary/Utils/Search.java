@@ -1,7 +1,7 @@
-package Utils;
+package main.java.com.example.DigitalLibrary.Utils;
 
-import Models.Book;
-import Models.Holder;
+import main.java.com.example.DigitalLibrary.Models.Book;
+import main.java.com.example.DigitalLibrary.Models.Holder;
 
 import java.util.List;
 

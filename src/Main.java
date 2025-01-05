@@ -1,9 +1,9 @@
-import Models.Book;
-import Models.Holder;
-import Services.LoanService;
-import Utils.DatabaseWriterFile;
-import Services.Register;
-import Utils.Templates;
+import main.java.com.example.DigitalLibrary.Models.Book;
+import main.java.com.example.DigitalLibrary.Models.Holder;
+import main.java.com.example.DigitalLibrary.Services.LoanService;
+import main.java.com.example.DigitalLibrary.Utils.DatabaseWriterFile;
+import main.java.com.example.DigitalLibrary.Services.Register;
+import main.java.com.example.DigitalLibrary.Utils.Templates;
 
 import java.util.List;
 import java.util.Scanner;

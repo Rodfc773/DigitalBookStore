@@ -1,7 +1,7 @@
-package Utils;
+package main.java.com.example.DigitalLibrary.Utils;
 
-import Models.Book;
-import Models.Holder;
+import main.java.com.example.DigitalLibrary.Models.Book;
+import main.java.com.example.DigitalLibrary.Models.Holder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +14,7 @@ public class DatabaseReadFile {
 
     public static List<Book> readBooksAtJsonFile (List<Book> books) throws IOException
     {
-        Path filePath = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/database/books.json");
+        Path filePath = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/main.java.com.example.DigitalLibrary.database/books.json");
 
         if(!Files.exists(filePath)){
             throw new IOException("Arquivo JSON contendo os dados dos livros não foi encontrado");
@@ -48,7 +48,7 @@ public class DatabaseReadFile {
 
     public static List<Holder> readHoldersFromFile(List<Holder> holders) throws IOException{
 
-        Path filePath = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/database/holders.json");
+        Path filePath = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/main.java.com.example.DigitalLibrary.database/holders.json");
 
         if(!Files.exists(filePath)) throw new IOException("Arquivo contendo os dados dos usuários não foram encontrados");
 

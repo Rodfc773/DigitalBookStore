@@ -1,7 +1,4 @@
-package Utils;
-
-import java.util.HashMap;
-import java.util.Map;
+package main.java.com.example.DigitalLibrary.Utils;
 
 public class Templates {
 

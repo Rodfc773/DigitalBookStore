@@ -1,10 +1,10 @@
-package Services;
+package main.java.com.example.DigitalLibrary.Services;
 
-import Models.Book;
-import Models.Holder;
-import Utils.DatabaseReadFile;
-import Utils.Templates;
-import Utils.Validations;
+import main.java.com.example.DigitalLibrary.Models.Book;
+import main.java.com.example.DigitalLibrary.Models.Holder;
+import main.java.com.example.DigitalLibrary.Utils.DatabaseReadFile;
+import main.java.com.example.DigitalLibrary.Utils.Templates;
+import main.java.com.example.DigitalLibrary.Utils.Validations;
 
 import java.util.ArrayList;
 import java.util.List;

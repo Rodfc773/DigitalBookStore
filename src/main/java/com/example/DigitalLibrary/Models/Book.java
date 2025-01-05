@@ -1,4 +1,4 @@
-package Models;
+package main.java.com.example.DigitalLibrary.Models;
 
 public class Book {
 

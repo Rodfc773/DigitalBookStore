@@ -1,6 +1,5 @@
-package Utils;
+package main.java.com.example.DigitalLibrary.Utils;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
