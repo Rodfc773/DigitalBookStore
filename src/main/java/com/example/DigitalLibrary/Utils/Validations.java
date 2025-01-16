@@ -1,4 +1,4 @@
-package main.java.com.example.DigitalLibrary.Utils;
+package com.example.DigitalLibrary.Utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

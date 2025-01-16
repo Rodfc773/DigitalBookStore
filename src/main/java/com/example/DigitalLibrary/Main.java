@@ -1,9 +1,12 @@
-import main.java.com.example.DigitalLibrary.Models.Book;
-import main.java.com.example.DigitalLibrary.Models.Holder;
-import main.java.com.example.DigitalLibrary.Services.LoanService;
-import main.java.com.example.DigitalLibrary.Utils.DatabaseWriterFile;
-import main.java.com.example.DigitalLibrary.Services.Register;
-import main.java.com.example.DigitalLibrary.Utils.Templates;
+package com.example.DigitalLibrary;
+
+import com.example.DigitalLibrary.Models.Book;
+import com.example.DigitalLibrary.Models.Holder;
+import com.example.DigitalLibrary.Services.LoanService;
+import com.example.DigitalLibrary.Utils.DatabaseWriterFile;
+import com.example.DigitalLibrary.Services.Register;
+import com.example.DigitalLibrary.Utils.Templates;
+import com.example.DigitalLibrary.database.DatabaseConfig;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +21,10 @@ public class Main {
         Register register = new Register();
 
         boolean online = true;
+
+        DatabaseConfig databaseConnections = DatabaseConfig.getInstance();6
+
+        databaseConnections.testConnection();
 
         while(online){
 

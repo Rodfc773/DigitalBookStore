@@ -1,7 +1,7 @@
-package main.java.com.example.DigitalLibrary.Utils;
+package com.example.DigitalLibrary.Utils;
 
-import main.java.com.example.DigitalLibrary.Models.Book;
-import main.java.com.example.DigitalLibrary.Models.Holder;
+import com.example.DigitalLibrary.Models.Book;
+import com.example.DigitalLibrary.Models.Holder;
 
 
 import java.io.IOException;

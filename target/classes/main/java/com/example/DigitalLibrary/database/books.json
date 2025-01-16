@@ -1,0 +1,5 @@
+[
+{"id":1,"title":"Faroeste","author":"Rodrigo","publishedDate":"12/08/2019","numberOfPages":124,"holder":1},
+{"id":2,"title":"teste","author":"teste","publishedDate":"12/09/2025","numberOfPages":123,"holder":2},
+{"id":3,"title":"Hower","author":"Tutor","publishedDate":"12/10/2005","numberOfPages":123,"holder":-1}
+]

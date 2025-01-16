@@ -7,6 +7,22 @@
     <artifactId>DigitalLibrary</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.9.0</version> <!-- Certifique-se de usar uma versão atual do plugin -->
+                <configuration>
+                    <source>17</source> <!-- Versão do Java usado como fonte -->
+                    <target>17</target> <!-- Versão do Java para a compilação -->
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+    </build>
+
     <dependencies>
 
         <dependency>
@@ -14,5 +30,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
     </dependencies>
 </project>

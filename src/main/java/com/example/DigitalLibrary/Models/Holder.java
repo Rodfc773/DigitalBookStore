@@ -1,4 +1,4 @@
-package main.java.com.example.DigitalLibrary.Models;
+package com.example.DigitalLibrary.Models;
 
 public class Holder {
 
