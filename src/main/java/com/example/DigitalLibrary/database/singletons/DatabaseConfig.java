@@ -1,4 +1,4 @@
-package com.example.DigitalLibrary.database;
+package com.example.DigitalLibrary.database.singletons;
 
 
 import io.github.cdimascio.dotenv.Dotenv;
@@ -10,14 +10,16 @@ public class DatabaseConfig{
 
     private static DatabaseConfig instance;
 
+    private final String urlTemplate = "jdbc:%s://%s:%s/%s";
+
     Dotenv dotenv = Dotenv.configure().load();
 
-    private String databaseName;
-    private String databasePort;
-    private String databaseTypeConnection;
-    private String databaseUrl;
-    private String databaseUser;
-    private String databasePassword;
+    private final String databaseName;
+    private final String databasePort;
+    private final String databaseTypeConnection;
+    private final String databaseUrl;
+    private final String databaseUser;
+    private final String databasePassword;
 
     private DatabaseConfig(){
 
@@ -29,9 +31,7 @@ public class DatabaseConfig{
         databasePassword = dotenv.get("DATABASE_PASSWORD");
     }
 
-    public void testConnection() {
-
-        String urlTemplate = "jdbc:%s://%s:%s/%s";
+    public Connection getConnection() {
 
         String connectionString = String.format(urlTemplate,databaseTypeConnection,databaseUrl,databasePort,databaseName);
 
@@ -41,10 +41,10 @@ public class DatabaseConfig{
             if(connection == null) System.out.println("Falha na conexão com o banco de dados");
 
             System.out.println("Conexão com banco de dados bem sucedida");
+            return  connection;
 
         } catch (Exception e) {
-            System.out.println("Error ao realizar a conexão com banco de dados");
-            e.printStackTrace();
+            throw new RuntimeException("Error ao conectar a base de dados");
         }
     }
 
