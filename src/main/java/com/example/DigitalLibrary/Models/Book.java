@@ -28,6 +28,7 @@ public class Book {
         this.setNumberOfPages(numberOfPages);
         this.setHolderId(holderId);
     }
+    public Book(){};
 
     @Override
     public String toString() {

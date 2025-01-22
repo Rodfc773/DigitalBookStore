@@ -6,7 +6,6 @@ import com.example.DigitalLibrary.Services.LoanService;
 import com.example.DigitalLibrary.Utils.DatabaseWriterFile;
 import com.example.DigitalLibrary.Services.Register;
 import com.example.DigitalLibrary.Utils.Templates;
-import com.example.DigitalLibrary.database.singletons.DatabaseConfig;
 
 import java.util.List;
 import java.util.Scanner;
@@ -21,10 +20,6 @@ public class Main {
         Register register = new Register();
 
         boolean online = true;
-
-        DatabaseConfig databaseConnections = DatabaseConfig.getInstance();
-
-        databaseConnections.testConnection();
 
         while(online){
 

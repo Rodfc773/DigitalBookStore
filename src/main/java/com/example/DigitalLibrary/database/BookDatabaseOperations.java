@@ -8,6 +8,7 @@ import com.example.DigitalLibrary.interfaces.QueryModel;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +44,33 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
 
     @Override
     public Optional<Book> findOneByName(String title) {
-        return Optional.empty();
+
+        String query = SQLQueryConstructor.getSearchOneQuery();
+
+        try {
+
+            PreparedStatement ps = databaseConnection.getConnection().prepareStatement(query);
+
+            ps.setString(1, title);
+
+            ResultSet resultSearch = ps.executeQuery();
+
+            if (!resultSearch.next()) return Optional.empty();
+
+            Book foundBook = new Book();
+
+            foundBook.setId(resultSearch.getInt("id"));
+            foundBook.setBookName(resultSearch.getString("title"));
+            foundBook.setAuthorName(resultSearch.getString("author"));
+            foundBook.setNumberOfPages(resultSearch.getInt("pages"));
+            foundBook.setHolderId(resultSearch.getInt("renterID"));
+            foundBook.setPublished(resultSearch.getDate("publish_date").toString());
+
+            return Optional.of(foundBook);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
