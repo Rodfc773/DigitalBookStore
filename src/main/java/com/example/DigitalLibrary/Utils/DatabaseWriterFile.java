@@ -1,23 +1,20 @@
-package Utils;
+package com.example.DigitalLibrary.Utils;
 
-import Models.Book;
-import Models.Holder;
+import com.example.DigitalLibrary.Models.Book;
+import com.example.DigitalLibrary.Models.Holder;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class DatabaseWriterFile {
 
-    private static final Path BOOKS_FILE_PATH = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/database/books.json");
-    private static final Path HOLDERS_FILE_PATH = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/database/holders.json");
+    private static final Path BOOKS_FILE_PATH = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/main.java.com.example.DigitalLibrary.database/books.json");
+    private static final Path HOLDERS_FILE_PATH = Path.of("/home/rodrigo/IdeaProjects/DigitalLibrary/src/main.java.com.example.DigitalLibrary.database/holders.json");
 
     public static void saveBooksOnFile(List<Book> books) throws IOException {
 

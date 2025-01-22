@@ -1,4 +1,4 @@
-package Models;
+package com.example.DigitalLibrary.Models;
 
 public class Book {
 
@@ -28,6 +28,7 @@ public class Book {
         this.setNumberOfPages(numberOfPages);
         this.setHolderId(holderId);
     }
+    public Book(){};
 
     @Override
     public String toString() {

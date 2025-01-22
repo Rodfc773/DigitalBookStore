@@ -1,8 +1,9 @@
-package Services;
+package com.example.DigitalLibrary.Services;
 
-import Models.Book;
-import Models.Holder;
-import Utils.Search;
+import com.example.DigitalLibrary.Models.Book;
+import com.example.DigitalLibrary.Models.Holder;
+import com.example.DigitalLibrary.Utils.Search;
+import com.example.DigitalLibrary.Services.Register;
 
 import java.util.Scanner;
 
