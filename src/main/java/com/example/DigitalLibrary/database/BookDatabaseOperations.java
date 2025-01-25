@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,7 +76,36 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
 
     @Override
     public List<Book> findAll() {
-        return List.of();
+        List<Book> allBooksFound = new ArrayList<>();
+
+        String query = SQLQueryConstructor.getSearchAllQuery();
+
+        try{
+            PreparedStatement ps = databaseConnection.getConnection().prepareStatement(query);
+
+            ResultSet resultSearch = ps.executeQuery();
+
+            if(!resultSearch.next()) return allBooksFound;
+
+            while(resultSearch.next()){
+
+                Book foundBook = new Book();
+
+                foundBook.setId(resultSearch.getInt("id"));
+                foundBook.setBookName(resultSearch.getString("title"));
+                foundBook.setAuthorName(resultSearch.getString("author"));
+                foundBook.setNumberOfPages(resultSearch.getInt("pages"));
+                foundBook.setHolderId(resultSearch.getInt("renterID"));
+                foundBook.setPublished(resultSearch.getDate("publish_date").toString());
+
+                allBooksFound.add(foundBook);
+            }
+
+            return  allBooksFound;
+        } catch (Exception e) {
+            throw new RuntimeException("Ocorreu um erro ao tentar buscar os livros");
+        }
+
     }
 
     @Override
