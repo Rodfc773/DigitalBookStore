@@ -1,13 +1,16 @@
 package com.example.DigitalLibrary.Models;
 
+import java.util.Date;
+
 public class Book {
 
-    private String bookName;
-    private String authorName;
-    private String published;
-    private int numberOfPages;
-    private int holderId;
+    private String title;
+    private String author;
+    private String published_date;
+    private int pages;
+    private int holderID;
     private int id;
+    private String created_at;
 
 
     public Book(String bookName, String authorName, String published, int numberOfPages, int id){
@@ -17,7 +20,7 @@ public class Book {
         this.setId(id);
         this.setAuthorName(authorName);
         this.setNumberOfPages(numberOfPages);
-        this.holderId = -1;
+        this.holderID = -1;
     }
     public Book(String bookName, String authorName, String published, int numberOfPages, int id, int holderId){
 
@@ -48,44 +51,50 @@ public class Book {
         return  this.id;
     }
     public String getBookName() {
-        return bookName;
+        return title;
     }
 
     public String getAuthorName() {
-        return authorName;
+        return author;
     }
 
     public String getPublished(){
 
-        return this.published;
+        return this.published_date;
     }
 
     public int getHolderId(){
-        return this.holderId;
+        return this.holderID;
     }
     public int getNumberOfPages() {
-        return numberOfPages;
+        return pages;
     }
 
+    public String getCreatedAt(){ return this.created_at;}
+
     public void setNumberOfPages(int numberOfPages) {
-        this.numberOfPages = numberOfPages;
+        this.pages = numberOfPages;
     }
 
     public void setPublished(String published) {
-        this.published = published;
+        this.published_date = published;
     }
 
     public void setHolderId(int holderId){
-        this.holderId = holderId;
+        this.holderID = holderId;
     }
 
     public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+        this.author = authorName;
     }
 
     public void setBookName(String bookName) {
-        this.bookName = bookName;
+        this.title = bookName;
     }
 
     public void setId(int id){this.id = id;}
+
+    public void setCreatedAt(Date createdAt) {
+        this.created_at = createdAt.toString();
+    }
 }

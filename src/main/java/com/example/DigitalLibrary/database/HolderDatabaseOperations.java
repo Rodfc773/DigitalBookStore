@@ -24,7 +24,7 @@ public class HolderDatabaseOperations extends DatabaseOperations<Holder> {
     }
 
     @Override
-    public Optional<Holder> updateOne(Holder updatedData) {
+    public Optional<Holder> updateOne(Holder updatedData, int id) {
         return Optional.empty();
     }
 

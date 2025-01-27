@@ -37,7 +37,7 @@ public class BookQueryModelService implements QueryModel {
 
         queryBuilder.deleteCharAt(queryBuilder.length()-1);
 
-        queryBuilder.append("WHERE title = ?");
+        queryBuilder.append("WHERE id = ?");
 
         return queryBuilder.toString();
     }
