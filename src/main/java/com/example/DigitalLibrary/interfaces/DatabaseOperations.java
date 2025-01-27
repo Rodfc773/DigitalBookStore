@@ -12,6 +12,6 @@ public abstract class DatabaseOperations<T> {
     public abstract T createResgister(T data);
     public abstract Optional<T> findOneByName(String name);
     public abstract List<T> findAll();
-    public abstract Optional<T> updateOne(T dataUpdated);
+    public abstract Optional<T> updateOne(T dataUpdated, int id);
     public abstract Optional<T> deleteOne(String name);
 }

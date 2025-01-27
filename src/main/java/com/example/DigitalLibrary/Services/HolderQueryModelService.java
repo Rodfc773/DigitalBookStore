@@ -37,7 +37,7 @@ public class HolderQueryModelService implements QueryModel {
 
         queryBuilder.deleteCharAt(queryBuilder.length()-1);
 
-        queryBuilder.append("WHERE email = ?");
+        queryBuilder.append("WHERE id = ?");
         return queryBuilder.toString();
     }
 }
