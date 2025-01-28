@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  bd:
+    image: mysql:8
+    container_name: mysql-db_container
+    ports:
+      - '3306:3306'
+    volumes:
+      - digital-book-store:/var/lib/mysql/data
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: digital_Book_Store
+
+volumes:
+  mysql_data:
