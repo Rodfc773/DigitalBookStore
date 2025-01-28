@@ -123,6 +123,9 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
             field.setAccessible(true);
 
             try {
+
+                if(field.get(dataUpdated) == null) continue;
+
                 fieldsToBeUpdated.put(field.getName(), field.get(dataUpdated));
             } catch (Exception e) {
                 System.out.println("Deu algo de errado na conversão dos dados para o Map");
