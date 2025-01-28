@@ -2,17 +2,18 @@ version: '3.8'
 
 services:
   bd:
-    image: postgres
-    container_name: postgres-db
+    image: mysql:8
+    container_name: mysql-db_container
     ports:
-      - '8080:8080'
+      - '3306:3306'
     volumes:
-      - digital-book-store:/var/lib/postgresql/data
+      - digital-book-store:/var/lib/mysql/data
     restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: DigitalBookStore
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: digital_Book_Store
 
 volumes:
-  postgres_data:
+  mysql_data:
