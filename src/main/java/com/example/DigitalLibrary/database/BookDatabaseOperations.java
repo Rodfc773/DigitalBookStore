@@ -132,7 +132,6 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
                 e.printStackTrace();
             }
         }
-
         try{
 
             String query = SQLQueryConstructor.getUpdateObeQuery(fieldsToBeUpdated);
