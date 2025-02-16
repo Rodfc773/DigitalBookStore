@@ -138,8 +138,20 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
 
             PreparedStatement ps = conn.prepareStatement(query);
 
+            Set<Object> kValues = new HashSet<>(fieldsToBeUpdated.values());
+
+            List<Object> values = Arrays.asList(kValues.toArray());
+
+            for (int i = 0; i < values.size(); i++) {
+                ps.setObject(i + 1, values.indexOf(i));
+            }
+
+
             ResultSet resultOperation = ps.executeQuery();
 
+            while (resultOperation.next()){
+                dataUpdated.setCreatedAt(resultOperation.getDate("created_at"));
+            }
 
             return Optional.of(dataUpdated);
 
