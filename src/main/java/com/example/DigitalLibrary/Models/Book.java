@@ -1,6 +1,11 @@
 package com.example.DigitalLibrary.Models;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Locale;
 
 public class Book {
 
@@ -20,7 +25,6 @@ public class Book {
         this.setId(id);
         this.setAuthorName(authorName);
         this.setNumberOfPages(numberOfPages);
-        this.holderID = -1;
     }
     public Book(String bookName, String authorName, String published, int numberOfPages, int id, int holderId){
 
@@ -31,12 +35,19 @@ public class Book {
         this.setNumberOfPages(numberOfPages);
         this.setHolderId(holderId);
     }
+    public Book(String bookName, String authorName, String published, int numberOfPages){
+
+        this.setBookName(bookName);
+        this.setPublished(published);
+        this.setAuthorName(authorName);
+        this.setNumberOfPages(numberOfPages);
+    }
     public Book(){};
 
     @Override
     public String toString() {
 
-        String existHolder = this.getHolderId() == -1 ? "Livro Disponível": "Livro Indisponível";
+        String existHolder = this.getHolderId() == null ? "Livro Disponível": "Livro Indisponível";
 
         return String.format(
                 "Id: %d\nTitulo: %s\nAutor: %s\nData de Publicamento: %s\nNúmero de Páginas: %d\nDisponibilidade: %s",
@@ -63,7 +74,7 @@ public class Book {
         return this.published_date;
     }
 
-    public int getHolderId(){
+    public Object getHolderId(){
         return this.holderID;
     }
     public int getNumberOfPages() {
@@ -96,5 +107,17 @@ public class Book {
 
     public void setCreatedAt(Date createdAt) {
         this.created_at = createdAt.toString();
+    }
+
+    public LocalDate dateConversion(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            // Convertendo a String para LocalDate
+            LocalDate dataConvertida = LocalDate.parse(this.published_date, formatter);
+            return dataConvertida;
+        } catch (DateTimeParseException e) {
+            throw new RuntimeException("Error ao converter a data de publicação de string para LocalDate" + e.getMessage());
+        }
     }
 }

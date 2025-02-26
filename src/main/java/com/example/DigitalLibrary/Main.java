@@ -52,21 +52,10 @@ public class Main {
                     }
                     break;
                 case 4:
-                    register.getBooks();
                     break;
                 case 5:
-                    register.getStringHolders();
                     break;
                 default:
-                    List<Book> books = register.getBooks();
-                    List<Holder> holders = register.getHolders();
-
-                    try{
-                        DatabaseWriterFile.saveBooksOnFile(books);
-                        DatabaseWriterFile.saveHoldersOnFile(holders);
-                    }catch (Exception e){
-                        System.out.println("Não foi possivel salvar os dados nos arquivo json, ocorreu o seguinte erro: " + e.getMessage());
-                    }
                     online = false;
 
                     break;

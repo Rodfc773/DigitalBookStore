@@ -7,10 +7,8 @@ import com.example.DigitalLibrary.interfaces.DatabaseOperations;
 import com.example.DigitalLibrary.interfaces.QueryModel;
 
 import java.lang.reflect.Field;
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -18,30 +16,44 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
 
     private final QueryModel SQLQueryConstructor = new BookQueryModelService();
     private final DatabaseConfig databaseConnection = DatabaseConfig.getInstance();
-
+    
+    public BookDatabaseOperations(){}
     @Override
     public Book createResgister(Book data) {
-
         String createQuery = SQLQueryConstructor.getCreateQuery();
 
-        try{
-            PreparedStatement ps = databaseConnection.getConnection().prepareStatement(createQuery);
+        try {
 
-            ps.setString(1,data.getBookName());
+            Connection conn = databaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(createQuery, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setString(1, data.getBookName());
             ps.setString(2, data.getAuthorName());
-            ps.setString(3, data.getPublished());
+            ps.setDate(3,Date.valueOf(data.dateConversion()));
             ps.setInt(4, data.getNumberOfPages());
             ps.setInt(5, 0);
             ps.setDate(6, Date.valueOf(LocalDate.now()));
 
-            ps.executeUpdate();
+            int affectedRows = ps.executeUpdate(); // Executa o INSERT
+            if (affectedRows == 0) {
+                throw new SQLException("A inserção falhou, nenhuma linha foi afetada.");
+            }
 
-            return data;
+            // Obtém o ID gerado automaticamente (caso exista)
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                data.setId(generatedKeys.getInt(1)); // Supondo que ID seja um inteiro
+            } else {
+                throw new SQLException("Falha ao obter o ID gerado.");
+            }
 
+            return data;  // Retorna o objeto com o ID atualizado
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao inserir as informações no banco de dados");
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir as informações no banco de dados", e);
         }
     }
+
 
     @Override
     public Optional<Book> findOneByName(String title) {
@@ -162,6 +174,28 @@ public class BookDatabaseOperations extends DatabaseOperations<Book> {
 
     @Override
     public Optional<Book> deleteOne(String name) {
-        return Optional.empty();
+
+        Connection conn = databaseConnection.getConnection();
+        String deleteQuery = SQLQueryConstructor.getDeleteQuery();
+
+        try{
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+
+            ResultSet result = ps.executeQuery();
+
+            Book deletdBook = new Book();
+
+            while (result.next()){
+                deletdBook.setBookName(result.getString("title"));
+                deletdBook.setAuthorName(result.getString("author"));
+                deletdBook.setId(result.getInt("id"));
+                deletdBook.setNumberOfPages(result.getInt("pages"));
+                deletdBook.setPublished(result.getDate("publish_date").toString());
+                deletdBook.setHolderId(result.getInt("renterID"));
+            }
+            return Optional.empty();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,21 +1,28 @@
 package com.example.DigitalLibrary.repositories;
 
 import com.example.DigitalLibrary.Models.Book;
-import com.example.DigitalLibrary.Services.BookQueryModelService;
-import com.example.DigitalLibrary.interfaces.QueryModel;
+import com.example.DigitalLibrary.database.BookDatabaseOperations;
 import com.example.DigitalLibrary.interfaces.Repository;
 
 import java.util.List;
 
 public class BookRepository implements Repository<Book> {
 
-    private QueryModel booksQuery = new BookQueryModelService();
+    private BookDatabaseOperations bookOperations = new BookDatabaseOperations();
+
+    public BookRepository(){}
 
     @Override
     public Book create(Book newBook) {
 
-        String SQLQuery = booksQuery.getCreateQuery();
-        return null;
+        try{
+            Book createdBook = this.bookOperations.createResgister(newBook);
+            return createdBook;
+        } catch (Exception e) {
+
+            throw new RuntimeException(e.getMessage());
+
+        }
     }
 
     @Override

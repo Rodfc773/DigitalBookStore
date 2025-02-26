@@ -20,21 +20,5 @@ public class LoanService {
 
         String bookName = scan.nextLine();
 
-        Holder foundholder = Search.linearSearchHolder(holderName, register.getHolders());
-        Book foundBook = Search.linearSearchBook(bookName, register.getBooks());
-
-
-        if(foundholder == null) throw new RuntimeException("User not found");
-        if(foundBook == null) throw new RuntimeException("Book not found");
-
-        if(foundBook.getHolderId() != -1) throw  new RuntimeException("The book is already loaned");
-
-        foundholder.setBookInHandsID(foundBook.getId());
-
-        foundBook.setHolderId(foundholder.getID());
-
-        register.setHolder(foundholder);
-        register.setBook(foundBook);
-
     }
 }
