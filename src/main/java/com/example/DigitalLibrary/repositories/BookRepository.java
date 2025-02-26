@@ -41,7 +41,13 @@ public class BookRepository implements Repository<Book> {
     }
 
     @Override
-    public Book showOne() {
-        return null;
+    public Book showOne(String title) {
+
+        try {
+           return this.bookOperations.findOneByName(title).orElseThrow(()->new RuntimeException("Erro"));
+
+        }catch (Exception e){
+            throw new RuntimeException("Livro não existe no banco de dados");
+        }
     }
 }

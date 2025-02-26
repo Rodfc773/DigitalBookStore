@@ -10,5 +10,5 @@ public interface Repository <T>{
     public T update();
     public T delete();
     public List<T> showAll();
-    public T showOne();
+    public T showOne(String searchParam);
 }

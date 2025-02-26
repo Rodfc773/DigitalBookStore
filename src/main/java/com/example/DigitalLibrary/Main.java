@@ -1,13 +1,8 @@
 package com.example.DigitalLibrary;
 
-import com.example.DigitalLibrary.Models.Book;
-import com.example.DigitalLibrary.Models.Holder;
-import com.example.DigitalLibrary.Services.LoanService;
-import com.example.DigitalLibrary.Utils.DatabaseWriterFile;
-import com.example.DigitalLibrary.Services.Register;
+import com.example.DigitalLibrary.Services.BookService;
 import com.example.DigitalLibrary.Utils.Templates;
 
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -17,7 +12,7 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        Register register = new Register();
+        BookService bookService = new BookService();
 
         boolean online = true;
 
@@ -30,30 +25,27 @@ public class Main {
             switch (option){
 
                 case 1:
-                    try{
-                        register.registerHolders();
-                    }catch (Exception e){
 
-                        System.out.println("Ocorreu o seguinte erro ao cadastrar um usuário: " + e.getMessage());
-                    }
                     break;
                 case 2:
                     try{
-                        register.registerBook();
+                        bookService.registerBook();
                     } catch (Exception e) {
                         System.out.println("Ocorreu o seguinte error ao cadastrar um livro: " + e.getMessage());
                     }
                     break;
                 case 3:
-                    try{
-                        LoanService.loanBook(register);
-                    } catch (Exception e) {
-                        System.out.println("Ocorreu o seguinte error ao fazer o emprestimo do livro: " + e.getMessage());
-                    }
                     break;
                 case 4:
                     break;
                 case 5:
+                    break;
+                case 6:
+                    try{
+                        bookService.findOneBook();
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 default:
                     online = false;

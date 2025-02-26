@@ -1,17 +1,13 @@
 package com.example.DigitalLibrary.Services;
 
 import com.example.DigitalLibrary.Models.Book;
-import com.example.DigitalLibrary.Models.Holder;
-import com.example.DigitalLibrary.Utils.DatabaseReadFile;
 import com.example.DigitalLibrary.Utils.Templates;
 import com.example.DigitalLibrary.Utils.Validations;
 import com.example.DigitalLibrary.repositories.BookRepository;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Register {
+public class BookService {
 
     private BookRepository repository = new BookRepository();
 
@@ -55,13 +51,31 @@ public class Register {
 
         try {
             newBook = this.repository.create(newBook);
-
-            newBook.toString();
+            System.out.println( newBook.toString());
         } catch (RuntimeException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
         }
 
+    }
+
+    public void findOneBook(){
+
+        String title;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o titulo do livro que deseja buscar: ");
+
+        title = scanner.nextLine();
+
+        try{
+            Book foundBook = this.repository.showOne(title);
+
+            System.out.println(foundBook.toString());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     public void registerHolders() {

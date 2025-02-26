@@ -30,7 +30,7 @@ public class HolderRepository implements Repository<Holder> {
     }
 
     @Override
-    public Holder showOne() {
+    public Holder showOne(String name) {
         return null;
     }
 }
